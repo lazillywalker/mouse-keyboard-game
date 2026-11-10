@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>30秒ネズミ叩き・両手キーボード練習ゲーム Ver.1.0</title>
+<style>
+:root{font-family:"Noto Sans JP","Yu Gothic",Meiryo,sans-serif;color:#20374b;background:#f3f5ed;font-synthesis:none}*{box-sizing:border-box}body{margin:0}main{max-width:1040px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.15em;color:#62715d}h1{font-size:clamp(22px,3.3vw,32px);margin:5px 0}header p{margin:0;font-size:14px;color:#536374}.version{white-space:nowrap;border:1px solid #c8d3bc;border-radius:24px;padding:8px 14px;font-size:12px}.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,1fr);gap:24px}.play,.panel{border:1px solid #dce2d5;border-radius:24px;background:#fff;padding:22px}.stats{display:flex;justify-content:space-between;gap:20px}.label{font-size:13px;color:#526174;font-weight:700}.value{font-size:34px;font-weight:900;font-variant-numeric:tabular-nums}.value small{font-size:15px;margin-left:6px}.timebar{height:7px;background:#e7ecdf;border-radius:8px;overflow:hidden;margin:13px 0 20px}.timebar span{display:block;height:100%;background:#517448;width:100%}.board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:5px}.hole{position:relative;aspect-ratio:1;border-radius:50%;background:#e9eddf;box-shadow:inset 0 5px 0 #d8dece;display:grid;place-items:center;border:4px solid transparent}.hole.selected{border-color:#254d43;outline:3px solid #fff;box-shadow:0 0 0 6px #254d43,inset 0 5px 0 #d8dece}.hole.selected:after{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed #254d43;pointer-events:none}.hole svg{width:89%;height:89%;z-index:1;overflow:visible}.hole-number{position:absolute;bottom:9%;font-size:12px;color:#74806c}.mouse-label{font-size:14px;font-weight:900;fill:#fff;paint-order:stroke;stroke:#20374b;stroke-width:3px}.feedback{min-height:52px;margin:22px 0 0;text-align:center;font-weight:800;display:grid;place-items:center;color:#335849}.feedback.miss{color:#8b4b23}.panel h2{margin:0 0 12px;font-size:17px}.difficulty{display:flex;gap:6px;margin:0 0 18px;padding:0;border:0;min-width:0}.difficulty legend{font-size:14px;font-weight:800;margin-bottom:8px}.difficulty label{flex:1;cursor:pointer;position:relative}.difficulty input{position:absolute;top:10px;left:8px;accent-color:#315d49}.difficulty span{display:block;border:2px solid #e1e6db;border-radius:12px;padding:10px 4px 10px 27px;font-size:14px;font-weight:800}.difficulty small{display:block;font-size:11px;font-weight:400;margin-top:3px}.difficulty input:checked+span{border-color:#315d49;background:#eef4e9}.difficulty input:focus-visible+span{outline:3px solid #df9b20}.difficulty:disabled{opacity:.6}.start{width:100%;border:0;border-radius:13px;background:#294f40;color:white;padding:15px;font:inherit;font-weight:800;cursor:pointer}.start:disabled{background:#dce5d8;color:#4d6253;cursor:default}button:focus-visible{outline:4px solid #df9b20;outline-offset:3px}.guide{margin-top:20px;border-top:1px solid #e7ebdf;padding-top:18px}.guide p{font-size:14px;line-height:1.7;margin:8px 0}.keys{display:flex;align-items:center;gap:16px}.wasd{display:grid;grid-template-columns:repeat(3,32px);gap:4px;flex-shrink:0}.wasd kbd:first-child{grid-column:2}.wasd kbd:nth-child(2){grid-column:1}kbd{font:800 16px/1.2 inherit;display:inline-grid;place-items:center;min-width:28px;padding:5px 7px;border:1px solid #bac7ba;border-bottom-width:3px;border-radius:6px;background:white;color:#20374b}.tools{display:flex;gap:8px;margin:12px 0}.tool{flex:1;text-align:center;padding:9px 3px;border:2px solid #dee5dc;border-radius:12px;font-size:14px;font-weight:800}.tool.chosen{outline:3px solid #294f40;outline-offset:2px}.swatch{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--color);border:1px solid #607080;margin-right:4px}.tool kbd{display:block;width:32px;margin:0 auto 6px}.selection{font-size:13px;color:#335849;font-weight:800}.rule{background:#f4f6ef;border-radius:12px;padding:12px;margin-top:16px;font-size:13px;line-height:1.8}.result{border-radius:14px;background:#fff0c8;padding:14px;text-align:center;margin-bottom:16px}.result h2{margin:0 0 4px}.result strong{font-size:32px}.result p{margin:5px 0;font-size:13px}[hidden]{display:none!important}footer{text-align:center;margin-top:18px;font-size:12px;color:#677462}.urgent{color:#a24124}@media(max-width:720px){main{padding:16px}.layout{grid-template-columns:1fr;gap:16px}.play,.panel{padding:18px}.board{max-width:420px;margin:auto;gap:14px}.version{display:none}header{margin-bottom:14px}.feedback{margin-top:16px}}@media(prefers-reduced-motion:no-preference){.hole svg{animation:appear .12s ease-out}@keyframes appear{from{transform:scale(.8)}to{transform:scale(1)}}}
+</style>
+</head>
+<body>
+<main>
+ <header><div><div class="eyebrow">両手でチャレンジ！</div><h1>30秒ネズミ叩き</h1><p>左手で いどう。右手で えらんで、たたこう！</p></div><span class="version">Ver.1.0</span></header>
+ <div class="layout">
+  <section class="play" aria-label="ゲーム画面">
+   <div class="stats"><div><div class="label">のこり時間</div><div class="value" id="time">30.0<small>秒</small></div></div><div><div class="label">とくてん</div><div class="value"><span id="score">0</span><small>点</small></div></div></div>
+   <div class="timebar" aria-hidden="true"><span id="bar"></span></div>
+   <div class="board" id="board" role="group" aria-label="3行3列の穴。照準は中央"></div>
+   <p class="feedback" id="feedback" role="status">難易度をえらんで、Space でスタート！</p>
+  </section>
+  <aside class="panel" aria-label="設定とあそびかた">
+   <div class="result" id="result" role="status" hidden><h2>おつかれさま！</h2><strong><span id="finalScore">0</span> 点</strong><p>Enter でもう一度チャレンジ！</p></div>
+   <fieldset class="difficulty" id="difficulty"><legend>むずかしさ（1匹が出ている時間）</legend><label><input type="radio" name="level" value="5000" checked><span>初級<small>5秒</small></span></label><label><input type="radio" name="level" value="3000"><span>中級<small>3秒</small></span></label><label><input type="radio" name="level" value="1500"><span>上級<small>1.5秒</small></span></label></fieldset>
+   <button class="start" id="start" type="button">Space でスタート</button>
+   <div class="guide"><h2>あそびかた</h2><div class="keys"><div class="wasd" aria-label="W 上、A 左、S 下、D 右"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div><p><b>① 左手で照準をいどう</b><br>W ↑ ／ A ← ／ S ↓ ／ D →</p></div>
+   <p><b>② 右手で同じ色の道具をえらぶ</b></p>
+   <div class="tools" id="tools"><div class="tool chosen" data-color="blue"><kbd>J</kbd><span class="swatch" style="--color:#2480db"></span>青</div><div class="tool" data-color="red"><kbd>K</kbd><span class="swatch" style="--color:#e65555"></span>赤</div><div class="tool" data-color="yellow"><kbd>L</kbd><span class="swatch" style="--color:#efc744"></span>黄</div></div>
+   <div class="selection" id="selection">えらんでいる道具：青（J）</div>
+   <p><b>③ <kbd>I</kbd> でたたく！</b></p>
+   <div class="rule">場所と色があったら <b>＋10点！</b><br>まちがえても減点なし。もう一度たたけるよ。<br>当たるか時間がくると、次の1匹が出るよ。<br>キーは1回ずつ押そう。端では止まるよ。</div>
+   </div>
+  </aside>
+ </div>
+ <footer>30秒固定 ／ 音なし ／ インターネット不要</footer>
+</main>
+<script>
+(() => {
+ 'use strict';
+ const $ = id => document.getElementById(id);
+ const colors = {blue:{name:'青',hex:'#2480db',key:'J'},red:{name:'赤',hex:'#e65555',key:'K'},yellow:{name:'黄',hex:'#efc744',key:'L'}};
+ const colorNames = Object.keys(colors);
+ const holes = [];
+ let phase='ready', row=1, col=1, selected='blue', score=0, mouse=null;
+ let duration=5000, deadline=0, expires=0, frame=0;
+ for(let i=0;i<9;i++){
+  const hole=document.createElement('div'); hole.className='hole'; hole.setAttribute('role','img');
+  $('board').appendChild(hole); holes.push(hole);
+ }
+ function mouseSVG(color){
+  const c=colors[color];
+  return `<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M86 91 Q115 104 108 78" fill="none" stroke="${c.hex}" stroke-width="6" stroke-linecap="round"/><circle cx="33" cy="35" r="19" fill="${c.hex}"/><circle cx="87" cy="35" r="19" fill="${c.hex}"/><circle cx="33" cy="35" r="11" fill="#ffe0d9"/><circle cx="87" cy="35" r="11" fill="#ffe0d9"/><ellipse cx="60" cy="67" rx="37" ry="36" fill="${c.hex}"/><ellipse cx="60" cy="83" rx="21" ry="17" fill="#fff3dd"/><circle cx="46" cy="60" r="5" fill="#20374b"/><circle cx="74" cy="60" r="5" fill="#20374b"/><circle cx="47" cy="58" r="1.6" fill="white"/><circle cx="75" cy="58" r="1.6" fill="white"/><path d="M55 75 Q60 69 65 75 L60 81Z" fill="#20374b"/><path d="M60 81v5m-23-9-16-3m16 10-16 3m62-10 16-3m-16 10 16 3" stroke="#20374b" stroke-width="2" stroke-linecap="round"/><text x="60" y="108" text-anchor="middle" class="mouse-label">${c.name}</text></svg>`;
+ }
+ function draw(){
+  holes.forEach((h,i)=>{
+   const aimed=i===row*3+col, occupied=mouse && mouse.pos===i;
+   h.classList.toggle('selected',aimed);
+   const content=occupied?mouse.color:'empty';
+   if(h.dataset.content!==content){h.innerHTML=occupied?mouseSVG(mouse.color):`<span class="hole-number" aria-hidden="true">${i+1}</span>`;h.dataset.content=content;}
+   h.setAttribute('aria-label',`${Math.floor(i/3)+1}行${i%3+1}列${aimed?'、照準':''}、${occupied?colors[mouse.color].name+'のネズミ':'空の穴'}`);
+  });
+  $('board').setAttribute('aria-label',`3行3列の穴。照準は${row+1}行${col+1}列`);
+  document.querySelectorAll('.tool').forEach(t=>t.classList.toggle('chosen',t.dataset.color===selected));
+  $('selection').textContent=`えらんでいる道具：${colors[selected].name}（${colors[selected].key}）`;
+  $('score').textContent=score;
+ }
+ function say(message,miss=false){$('feedback').textContent=message;$('feedback').classList.toggle('miss',miss);}
+ function spawn(now){mouse={pos:Math.floor(Math.random()*9),color:colorNames[Math.floor(Math.random()*3)]};expires=now+duration;draw();}
+ function end(){
+  phase='ended'; cancelAnimationFrame(frame);mouse=null;draw();
+  $('time').innerHTML='0.0<small>秒</small>';$('bar').style.width='0%';
+  $('finalScore').textContent=score;$('result').hidden=false;$('difficulty').disabled=false;
+  $('start').disabled=false;$('start').textContent='Enter でもう一度';
+  say('30秒おしまい！ よくがんばったね！');
+ }
+ function advance(now){
+  if(phase!=='playing')return;
+  if(now>=deadline){end();return;}
+  const left=deadline-now;
+  $('time').innerHTML=(Math.ceil(left/100)/10).toFixed(1)+'<small>秒</small>';
+  $('time').classList.toggle('urgent',left<=5000);$('bar').style.width=(left/30000*100)+'%';
+  if(now>=expires)spawn(now);
+ }
+ function tick(now){advance(now);if(phase==='playing')frame=requestAnimationFrame(tick);}
+ function start(){
+  if(phase==='playing')return;
+  cancelAnimationFrame(frame);duration=Number(document.querySelector('input[name="level"]:checked').value);
+  phase='playing';row=1;col=1;selected='blue';score=0;
+  const now=performance.now();deadline=now+30000;
+  $('result').hidden=true;$('difficulty').disabled=true;$('start').disabled=true;
+  $('start').textContent='チャレンジ中！';$('time').classList.remove('urgent');
+  say('ネズミに照準をあわせて、同じ色で I！');spawn(now);tick(now);
+ }
+ $('start').addEventListener('click',start);
+ document.addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.altKey||e.metaKey||e.isComposing)return;
+  const key=e.key.toLowerCase();
+  if(!['w','a','s','d','j','k','l','i',' ','enter'].includes(key))return;
+  e.preventDefault(); if(e.repeat)return;
+  if(key===' ' && phase==='ready'){start();return;}
+  if((key==='enter'||key===' ')&&phase==='ended'){start();return;}
+  if(phase!=='playing')return;
+  const now=performance.now();advance(now);if(phase!=='playing')return;
+  if(key==='w')row=Math.max(0,row-1);
+  if(key==='s')row=Math.min(2,row+1);
+  if(key==='a')col=Math.max(0,col-1);
+  if(key==='d')col=Math.min(2,col+1);
+  if(key==='j')selected='blue';if(key==='k')selected='red';if(key==='l')selected='yellow';
+  if(key==='i'){
+   if(mouse.pos===row*3+col && mouse.color===selected){score+=10;say('あたり！ ＋10点！');spawn(now);}
+   else say(mouse.pos!==row*3+col?'おしい！ ネズミの場所にいどうしよう！':'おしい！ ネズミと同じ色をえらぼう！',true);
+  }
+  draw();
+ });
+ document.addEventListener('visibilitychange',()=>{if(phase==='playing')advance(performance.now());});
+ draw();
+})();
+</script>
+</body>
+</html>
